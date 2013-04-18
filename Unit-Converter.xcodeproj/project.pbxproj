@@ -17,7 +17,12 @@
 		2D7F33C317204C7D0092D6C3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F33C217204C7D0092D6C3 /* Default@2x.png */; };
 		2D7F33C517204C7D0092D6C3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F33C417204C7D0092D6C3 /* Default-568h@2x.png */; };
 		2D7F33C817204C7D0092D6C3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F33C617204C7D0092D6C3 /* MainStoryboard.storyboard */; };
-		2D7F33CB17204C7D0092D6C3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33CA17204C7D0092D6C3 /* ViewController.m */; };
+		2D7F33D7172070820092D6C3 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33D4172070820092D6C3 /* ECSlidingViewController.m */; };
+		2D7F33D8172070820092D6C3 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33D6172070820092D6C3 /* UIImage+ImageWithUIView.m */; };
+		2D7F33DF1720724C0092D6C3 /* InitialSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33DE1720724C0092D6C3 /* InitialSlidingViewController.m */; };
+		2D7F33E2172074590092D6C3 /* LengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E1172074590092D6C3 /* LengthViewController.m */; };
+		2D7F33E5172076400092D6C3 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E4172076400092D6C3 /* MenuViewController.m */; };
+		2D7F33E817207D640092D6C3 /* CurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E717207D640092D6C3 /* CurrencyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +40,18 @@
 		2D7F33C217204C7D0092D6C3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2D7F33C417204C7D0092D6C3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2D7F33C717204C7D0092D6C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		2D7F33C917204C7D0092D6C3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2D7F33CA17204C7D0092D6C3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2D7F33D3172070820092D6C3 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		2D7F33D4172070820092D6C3 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		2D7F33D5172070820092D6C3 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		2D7F33D6172070820092D6C3 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		2D7F33DD1720724C0092D6C3 /* InitialSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSlidingViewController.h; sourceTree = "<group>"; };
+		2D7F33DE1720724C0092D6C3 /* InitialSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialSlidingViewController.m; sourceTree = "<group>"; };
+		2D7F33E0172074590092D6C3 /* LengthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LengthViewController.h; sourceTree = "<group>"; };
+		2D7F33E1172074590092D6C3 /* LengthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LengthViewController.m; sourceTree = "<group>"; };
+		2D7F33E3172076400092D6C3 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		2D7F33E4172076400092D6C3 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		2D7F33E617207D640092D6C3 /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyViewController.h; sourceTree = "<group>"; };
+		2D7F33E717207D640092D6C3 /* CurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +98,11 @@
 		2D7F33B417204C7D0092D6C3 /* Unit-Converter */ = {
 			isa = PBXGroup;
 			children = (
+				2D7F33D9172071B20092D6C3 /* Controllers */,
+				2D7F33D1172070820092D6C3 /* Vendor */,
 				2D7F33BD17204C7D0092D6C3 /* AppDelegate.h */,
 				2D7F33BE17204C7D0092D6C3 /* AppDelegate.m */,
 				2D7F33C617204C7D0092D6C3 /* MainStoryboard.storyboard */,
-				2D7F33C917204C7D0092D6C3 /* ViewController.h */,
-				2D7F33CA17204C7D0092D6C3 /* ViewController.m */,
 				2D7F33B517204C7D0092D6C3 /* Supporting Files */,
 			);
 			path = "Unit-Converter";
@@ -105,6 +120,40 @@
 				2D7F33C417204C7D0092D6C3 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D7F33D1172070820092D6C3 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				2D7F33D2172070820092D6C3 /* ECSlidingViewController */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		2D7F33D2172070820092D6C3 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2D7F33D3172070820092D6C3 /* ECSlidingViewController.h */,
+				2D7F33D4172070820092D6C3 /* ECSlidingViewController.m */,
+				2D7F33D5172070820092D6C3 /* UIImage+ImageWithUIView.h */,
+				2D7F33D6172070820092D6C3 /* UIImage+ImageWithUIView.m */,
+			);
+			path = ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		2D7F33D9172071B20092D6C3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D7F33DD1720724C0092D6C3 /* InitialSlidingViewController.h */,
+				2D7F33DE1720724C0092D6C3 /* InitialSlidingViewController.m */,
+				2D7F33E0172074590092D6C3 /* LengthViewController.h */,
+				2D7F33E1172074590092D6C3 /* LengthViewController.m */,
+				2D7F33E3172076400092D6C3 /* MenuViewController.h */,
+				2D7F33E4172076400092D6C3 /* MenuViewController.m */,
+				2D7F33E617207D640092D6C3 /* CurrencyViewController.h */,
+				2D7F33E717207D640092D6C3 /* CurrencyViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +224,12 @@
 			files = (
 				2D7F33BB17204C7D0092D6C3 /* main.m in Sources */,
 				2D7F33BF17204C7D0092D6C3 /* AppDelegate.m in Sources */,
-				2D7F33CB17204C7D0092D6C3 /* ViewController.m in Sources */,
+				2D7F33D7172070820092D6C3 /* ECSlidingViewController.m in Sources */,
+				2D7F33D8172070820092D6C3 /* UIImage+ImageWithUIView.m in Sources */,
+				2D7F33DF1720724C0092D6C3 /* InitialSlidingViewController.m in Sources */,
+				2D7F33E2172074590092D6C3 /* LengthViewController.m in Sources */,
+				2D7F33E5172076400092D6C3 /* MenuViewController.m in Sources */,
+				2D7F33E817207D640092D6C3 /* CurrencyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +352,7 @@
 				2D7F33D017204C7D0092D6C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

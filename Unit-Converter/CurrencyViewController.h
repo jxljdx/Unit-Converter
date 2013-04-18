@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CurrencyViewController.h
 //  Unit-Converter
 //
 //  Created by Jundong Liao on 4/18/13.
@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ECSlidingViewController.h"
+#import "MenuViewController.h"
 
-@interface ViewController : UIViewController
+@interface CurrencyViewController : UIViewController
 
 @end
