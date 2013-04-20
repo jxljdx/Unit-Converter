@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Initial Sliding View Controller-->
@@ -37,6 +37,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="LWF-C3-Ywa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <items>
                                     <navigationItem title="Currency" id="6qB-vs-AhD">
                                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Svk-Lx-Ofh">
@@ -91,7 +92,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="alp-QW-Ylq"/>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="oqA-qj-zkG"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Kilometer (km)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMl-z9-k74">
@@ -104,7 +105,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="5oN-FL-GZG"/>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="WZj-2W-ofp"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Feet (ft)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQI-vO-sdJ">
@@ -117,7 +118,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="l72-IX-Gqm"/>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="Hd9-ro-Ak1"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Inch (in)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPE-Yv-34G">
@@ -130,7 +131,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="uN3-6A-1TK"/>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="CdS-vN-xnw"/>
                                 </connections>
                             </textField>
                             <pickerView contentMode="scaleToFill" id="eRy-wm-eAl">
@@ -186,6 +187,10 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ftK-Ms-kF2" id="hZb-g8-1PD"/>
+                            <outlet property="delegate" destination="ftK-Ms-kF2" id="Wzt-8h-gsQ"/>
+                        </connections>
                     </tableView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yU0-8E-1vL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,6 +198,39 @@
             <point key="canvasLocation" x="770" y="-171"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CurrencyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrencyViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="revealMenu:"/>
+            </relationships>
+        </class>
+        <class className="ECSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="InitialSlidingViewController" superclassName="ECSlidingViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialSlidingViewController.h"/>
+        </class>
+        <class className="LengthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LengthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clearInput:"/>
+                <relationship kind="action" name="revealMenu:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="choice1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="input1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input2" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input3" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input4" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

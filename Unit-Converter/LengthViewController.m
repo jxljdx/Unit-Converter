@@ -35,6 +35,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
     
     [self setChoice1:nil];
     [self setInput1:nil];
@@ -46,8 +48,6 @@
     [self setInput4:nil];
     
     self.lengthUnits=[[NSArray alloc]initWithObjects: @"inches",@"feet",@"yard",@"km",@"meter",@"cm",nil];
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
     // You just need to set the opacity, radius, and color.
