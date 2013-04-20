@@ -23,6 +23,7 @@
 		2D7F33E2172074590092D6C3 /* LengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E1172074590092D6C3 /* LengthViewController.m */; };
 		2D7F33E5172076400092D6C3 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E4172076400092D6C3 /* MenuViewController.m */; };
 		2D7F33E817207D640092D6C3 /* CurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E717207D640092D6C3 /* CurrencyViewController.m */; };
+		2D7F33EB1720AC5C0092D6C3 /* rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F33EA1720AC5C0092D6C3 /* rounded.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		2D7F33E4172076400092D6C3 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		2D7F33E617207D640092D6C3 /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyViewController.h; sourceTree = "<group>"; };
 		2D7F33E717207D640092D6C3 /* CurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyViewController.m; sourceTree = "<group>"; };
+		2D7F33EA1720AC5C0092D6C3 /* rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		2D7F33B417204C7D0092D6C3 /* Unit-Converter */ = {
 			isa = PBXGroup;
 			children = (
+				2D7F33E91720AC440092D6C3 /* Resources */,
 				2D7F33D9172071B20092D6C3 /* Controllers */,
 				2D7F33D1172070820092D6C3 /* Vendor */,
 				2D7F33BD17204C7D0092D6C3 /* AppDelegate.h */,
@@ -156,6 +159,14 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		2D7F33E91720AC440092D6C3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2D7F33EA1720AC5C0092D6C3 /* rounded.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,6 +223,7 @@
 				2D7F33C317204C7D0092D6C3 /* Default@2x.png in Resources */,
 				2D7F33C517204C7D0092D6C3 /* Default-568h@2x.png in Resources */,
 				2D7F33C817204C7D0092D6C3 /* MainStoryboard.storyboard in Resources */,
+				2D7F33EB1720AC5C0092D6C3 /* rounded.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +329,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Unit-Converter/Unit-Converter-Prefix.pch";
 				INFOPLIST_FILE = "Unit-Converter/Unit-Converter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -328,6 +341,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Unit-Converter/Unit-Converter-Prefix.pch";
 				INFOPLIST_FILE = "Unit-Converter/Unit-Converter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
