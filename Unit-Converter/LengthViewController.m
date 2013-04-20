@@ -14,6 +14,16 @@
 
 @implementation LengthViewController
 
+@synthesize lengthUnits;
+@synthesize choice1;
+@synthesize choice2;
+@synthesize choice3;
+@synthesize choice4;
+@synthesize input1;
+@synthesize input2;
+@synthesize input3;
+@synthesize input4;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +35,17 @@
 
 - (void)viewDidLoad
 {
+    
+    [self setChoice1:nil];
+    [self setInput1:nil];
+    [self setChoice2:nil];
+    [self setInput2:nil];
+    [self setChoice3:nil];
+    [self setInput3:nil];
+    [self setChoice4:nil];
+    [self setInput4:nil];
+    
+    self.lengthUnits=[[NSArray alloc]initWithObjects: @"inches",@"feet",@"yard",@"km",@"meter",@"cm",nil];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
@@ -51,5 +72,44 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 4;
+}
 
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [self.lengthUnits count];
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel *label;
+    label=[[UILabel alloc] initWithFrame:CGRectMake(0,0,50,32)];
+    label.backgroundColor=[UIColor clearColor];
+    label.text=[self.lengthUnits objectAtIndex:row];
+    return label;
+   
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if(component==0){
+        self.choice1.text=[self.lengthUnits objectAtIndex:row];
+    }else if(component==1){
+        self.choice2.text=[self.lengthUnits objectAtIndex:row];
+    }else if(component==2){
+        self.choice3.text=[self.lengthUnits objectAtIndex:row];
+    }else{
+        self.choice4.text=[self.lengthUnits objectAtIndex:row];
+    }
+}
+
+- (IBAction)textFieldDoneEditing:(id)sender {
+    [sender resignFirstResponder];
+}
+
+- (IBAction)clearInput:(id)sender {
+  
+    [self setInput1:nil];
+    [self setInput2:nil];
+    [self setInput3:nil];
+    [self setInput4:nil];
+}
 @end

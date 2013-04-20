@@ -73,7 +73,11 @@
                                                 <action selector="revealMenu:" destination="7rj-8Q-YKo" id="f01-hQ-23T"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Clear" id="2ce-Ia-ERZ"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Clear" id="2ce-Ia-ERZ">
+                                            <connections>
+                                                <action selector="clearInput:" destination="7rj-8Q-YKo" id="0J3-ob-o8Z"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -86,6 +90,9 @@
                                 <rect key="frame" x="20" y="83" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="alp-QW-Ylq"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Kilometer (km)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMl-z9-k74">
                                 <rect key="frame" x="20" y="121" width="106" height="21"/>
@@ -96,6 +103,9 @@
                                 <rect key="frame" x="20" y="143" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="5oN-FL-GZG"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Feet (ft)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQI-vO-sdJ">
                                 <rect key="frame" x="20" y="181" width="106" height="21"/>
@@ -106,6 +116,9 @@
                                 <rect key="frame" x="20" y="203" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="l72-IX-Gqm"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Inch (in)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPE-Yv-34G">
                                 <rect key="frame" x="20" y="241" width="106" height="21"/>
@@ -116,10 +129,31 @@
                                 <rect key="frame" x="20" y="262" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="uN3-6A-1TK"/>
+                                </connections>
                             </textField>
+                            <pickerView contentMode="scaleToFill" id="eRy-wm-eAl">
+                                <rect key="frame" x="0.0" y="332" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7rj-8Q-YKo" id="DRY-sb-9ig"/>
+                                    <outlet property="delegate" destination="7rj-8Q-YKo" id="FGa-oe-SoZ"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="choice1" destination="sIu-w8-ABX" id="A2P-oI-sTq"/>
+                        <outlet property="choice2" destination="vMl-z9-k74" id="xtI-uk-ZMo"/>
+                        <outlet property="choice3" destination="aQI-vO-sdJ" id="Qzv-fe-aYK"/>
+                        <outlet property="choice4" destination="rPE-Yv-34G" id="FKb-Pu-ruZ"/>
+                        <outlet property="input1" destination="R1J-xM-4cF" id="2K0-B5-ecc"/>
+                        <outlet property="input2" destination="65Z-aa-9br" id="2V6-5G-7tw"/>
+                        <outlet property="input3" destination="7ys-dW-FbP" id="0WX-2S-vqc"/>
+                        <outlet property="input4" destination="2Rh-br-Rh6" id="7qm-Xk-IOj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brt-Fg-fmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,10 +186,6 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ftK-Ms-kF2" id="TOA-hl-DCL"/>
-                            <outlet property="delegate" destination="ftK-Ms-kF2" id="Cwu-80-EP1"/>
-                        </connections>
                     </tableView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yU0-8E-1vL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -163,29 +193,6 @@
             <point key="canvasLocation" x="770" y="-171"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CurrencyViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrencyViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="revealMenu:"/>
-            </relationships>
-        </class>
-        <class className="ECSlidingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
-        </class>
-        <class className="InitialSlidingViewController" superclassName="ECSlidingViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialSlidingViewController.h"/>
-        </class>
-        <class className="LengthViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LengthViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="revealMenu:"/>
-            </relationships>
-        </class>
-        <class className="MenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
