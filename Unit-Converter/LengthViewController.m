@@ -36,16 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    [self setChoice1:nil];
-    [self setInput1:nil];
-    [self setChoice2:nil];
-    [self setInput2:nil];
-    [self setChoice3:nil];
-    [self setInput3:nil];
-    [self setChoice4:nil];
-    [self setInput4:nil];
+	// Do any additional setup after loading the views
     
     self.lengthUnits=[[NSArray alloc]initWithObjects: @"inches",@"feet",@"yard",@"km",@"meter",@"cm",nil];
     
@@ -60,6 +51,20 @@
     }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+-(void)viewDidUnload
+{
+    [self setChoice1:nil];
+    [self setInput1:nil];
+    [self setChoice2:nil];
+    [self setInput2:nil];
+    [self setChoice3:nil];
+    [self setInput3:nil];
+    [self setChoice4:nil];
+    [self setInput4:nil];
+    
+    [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,9 +112,29 @@
 
 - (IBAction)clearInput:(id)sender {
   
-    [self setInput1:nil];
-    [self setInput2:nil];
-    [self setInput3:nil];
-    [self setInput4:nil];
+    self.input1.text = @"";
+    self.input2.text = @"";
+    self.input3.text = @"";
+    self.input4.text = @"";
 }
+
+- (IBAction)bgTaped:(id)sender {
+    [self.input1 resignFirstResponder];
+    [self.input2 resignFirstResponder];
+    [self.input3 resignFirstResponder];
+    [self.input4 resignFirstResponder];
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
