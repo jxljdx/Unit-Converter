@@ -11,7 +11,7 @@
 #import "MenuViewController.h"
 
 @interface LengthViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
-- (IBAction)textFieldDoneEditing:(id)sender;
+
 - (IBAction)clearInput:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *choice1;
 @property (strong, nonatomic) IBOutlet UITextField *input1;
@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *input3;
 @property (strong, nonatomic) IBOutlet UILabel *choice4;
 @property (strong, nonatomic) IBOutlet UITextField *input4;
+- (IBAction)convent:(id)sender;
 
 @property(nonatomic,strong) NSArray *lengthUnits;
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -82,7 +82,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Meter (m)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sIu-w8-ABX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="meter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sIu-w8-ABX">
                                 <rect key="frame" x="20" y="62" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -92,10 +92,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="oqA-qj-zkG"/>
+                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="yz8-fe-hOe"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Kilometer (km)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMl-z9-k74">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMl-z9-k74">
                                 <rect key="frame" x="20" y="121" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -105,10 +105,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="WZj-2W-ofp"/>
+                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="5Mr-Gc-4li"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Feet (ft)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQI-vO-sdJ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="feet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQI-vO-sdJ">
                                 <rect key="frame" x="20" y="181" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -118,10 +118,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="Hd9-ro-Ak1"/>
+                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="8bT-SG-lPl"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  Inch (in)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPE-Yv-34G">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="inch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPE-Yv-34G">
                                 <rect key="frame" x="20" y="241" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -131,7 +131,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="textFieldDoneEditing:" destination="7rj-8Q-YKo" eventType="editingDidEndOnExit" id="CdS-vN-xnw"/>
+                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="D6z-m3-q1i"/>
                                 </connections>
                             </textField>
                             <pickerView contentMode="scaleToFill" id="eRy-wm-eAl">
@@ -219,8 +219,8 @@
             <relationships>
                 <relationship kind="action" name="bgTaped:"/>
                 <relationship kind="action" name="clearInput:"/>
+                <relationship kind="action" name="convent:"/>
                 <relationship kind="action" name="revealMenu:"/>
-                <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="choice1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="choice2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="choice3" candidateClass="UILabel"/>
