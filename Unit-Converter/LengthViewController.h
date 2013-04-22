@@ -24,6 +24,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *input4;
 - (IBAction)convent:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *pickerTrans;
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
+
 @property(nonatomic,strong) NSArray *lengthUnits;
 
 @end

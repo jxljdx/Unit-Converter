@@ -23,6 +23,9 @@
 @synthesize input2;
 @synthesize input3;
 @synthesize input4;
+@synthesize pickerTrans;
+@synthesize picker;
+@synthesize pickerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,13 +41,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the views
     
-    self.lengthUnits=[[NSArray alloc]initWithObjects: @"inch",@"feet",@"yard",@"km",@"meter",@"cm",nil];
+    self.lengthUnits=[[NSArray alloc]initWithObjects: @"inch",@"foot",@"yard",@"meter",@"dm",@"cm",@"mm",@"km",@"mile",nil];
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
     // You just need to set the opacity, radius, and color.
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    
+    if((int)([UIScreen mainScreen].bounds.size.height) == 480){
+    self.pickerTrans.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+    }
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -64,6 +71,7 @@
     [self setChoice4:nil];
     [self setInput4:nil];
     
+    [self setPickerView:nil];
     [super viewDidUnload];
 }
 
@@ -74,6 +82,7 @@
 }
 
 - (IBAction)revealMenu:(id)sender {
+    [self bgTaped:nil];
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
@@ -131,9 +140,9 @@
         return number*1000;
     }
     if([unit rangeOfString:@"cm" ].location!=NSNotFound){
-        return number*0.1;
+        return number*0.01;
     }
-    if([unit rangeOfString:@"feet" ].location!=NSNotFound){
+    if([unit rangeOfString:@"foot" ].location!=NSNotFound){
             return number*0.3048;
     }
     if([unit rangeOfString:@"inch" ].location!=NSNotFound){
@@ -141,7 +150,20 @@
         }
     if([unit rangeOfString:@"yard" ].location!=NSNotFound){
             return number*0.9144;
-        }    
+        }
+    if([unit rangeOfString:@"dm" ].location!=NSNotFound){
+        return number*0.1;
+    }
+    if([unit rangeOfString:@"mile" ].location!=NSNotFound){
+        return number*1609.34399;
+    }
+    
+    if([unit rangeOfString:@"mm" ].location!=NSNotFound){
+        return number*0.001;
+    }
+//    if([unit rangeOfString:@"light year" ].location!=NSNotFound){
+//        return 9460528342560514;
+//    }
     return 0.0;
 }
 
@@ -152,10 +174,16 @@
     if([unit rangeOfString:@"km" ].location!=NSNotFound){
         return number*0.001;
     }
-    if([unit rangeOfString:@"cm" ].location!=NSNotFound){
+    if([unit rangeOfString:@"dm" ].location!=NSNotFound){
         return number*10;
     }
-    if([unit rangeOfString:@"feet" ].location!=NSNotFound){
+    if([unit rangeOfString:@"mm" ].location!=NSNotFound){
+        return number*1000;
+    }
+    if([unit rangeOfString:@"cm" ].location!=NSNotFound){
+        return number*100;
+    }
+    if([unit rangeOfString:@"foot" ].location!=NSNotFound){
         return number*3.2808;
     }
     if([unit rangeOfString:@"inch" ].location!=NSNotFound){
@@ -164,6 +192,11 @@
     if([unit rangeOfString:@"yard" ].location!=NSNotFound){
         return number*1.0936;
     }
+    if([unit rangeOfString:@"mile" ].location!=NSNotFound){
+        return number*0.000621;
+    }
+    
+    
     return 0.0;
 }
 
