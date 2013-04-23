@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"Length"];
+    self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"Top"];
 }
 
 - (void)didReceiveMemoryWarning

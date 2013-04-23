@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
+@class TopViewController;
 
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITabBarControllerDelegate>
 
