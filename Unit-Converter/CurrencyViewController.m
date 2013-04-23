@@ -44,8 +44,10 @@
     self.currency=[[NSMutableDictionary alloc] init];
     self.curUnits=[[NSMutableArray alloc] init];
     self.userDefaults = [NSUserDefaults standardUserDefaults];
+    self.curUnits=[[NSArray alloc]initWithObjects:@"EUR",@"USD",@"GBP",@"INR",@"AUD",@"CAD",@"AED",@"CHF",@"CNY",@"JPY",@"MYR",@"HKD", nil];
+    
     [self loadDataFromXML];
-    self.curUnits=[[NSArray alloc]initWithObjects:@"EUR",@"USD",@"GBP",@"INR",@"AUD",@"CAD",@"AED",@"CHF",@"CNY",@"JPY",@"MYR", nil];
+    
    
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
@@ -82,26 +84,43 @@
 
 - (void)loadDataFromXML {
     
+    
     NSURL *url= [[NSURL alloc] initWithString:@"http://www.ecb.int/stats/eurofxref/eurofxref-daily.xml"];
-    NSXMLParser* parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    if (parser == nil) {    // Connection failed
-        NSLog(@"no connection");
-        for(NSString *s in self.curUnits){
+    
+    NSString *URLString = [NSString stringWithContentsOfURL:url];
+    if(URLString==nil){
+        // Connection failed
+        
+        for(int i=0;i<[self.curUnits count];i++){
+           NSString *s=[self.curUnits objectAtIndex:i];
             [self.currency setValue:[self.userDefaults objectForKey:s] forKey:s];
         }
     }
     else{
+    NSXMLParser* parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     [parser setDelegate:self];
     [parser parse];
     }
-
+    NSString *time=[self.userDefaults objectForKey:@"time"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Last Update"
+                                                    message:time
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict{
     
     if ([elementName isEqualToString:@"Cube"]) {
+        NSString* time= [attributeDict valueForKey:@"time"];   //get update time
+        if(time){
+            [self.userDefaults setValue:time forKey:@"time"];
+            [self.userDefaults synchronize];
+
+        }
         
-        NSString* cur = [attributeDict valueForKey:@"currency"];
+        NSString* cur = [attributeDict valueForKey:@"currency"];  //get curency rate
         NSString* rate = [attributeDict valueForKey:@"rate"];
        // NSLog(@"currency: %@, rate: %@", cur, rate);
         if(cur){
