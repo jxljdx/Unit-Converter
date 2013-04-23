@@ -28,7 +28,7 @@
 {
     self.menuItems = [NSArray arrayWithObjects:@"Currency", @"Length", @"Area", @"Degree", @"Volume", @"Mass",
                       @"Temperature", @"Velocity", @"Pressure", @"Power", @"Energy", @"Force", @"Time", @"Iuminance",
-                      @"Density", @"data storage", nil];
+                      @"Density", @"Data storage", nil];
 }
 
 - (void)viewDidLoad

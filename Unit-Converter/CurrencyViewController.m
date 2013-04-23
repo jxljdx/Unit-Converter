@@ -48,6 +48,11 @@
     
     [self loadDataFromXML];
     
+    [self.picker selectRow:0 inComponent:0 animated:YES];
+    [self.picker selectRow:1 inComponent:1 animated:YES];
+    [self.picker selectRow:2 inComponent:2 animated:YES];
+    [self.picker selectRow:8 inComponent:3 animated:YES];
+    
    
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.

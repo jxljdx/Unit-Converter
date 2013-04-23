@@ -45,6 +45,11 @@
     
     self.lenUnit=[[NSDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
     
+    [self.picker selectRow:3 inComponent:0 animated:YES];
+    [self.picker selectRow:0 inComponent:1 animated:YES];
+    [self.picker selectRow:1 inComponent:2 animated:YES];
+    [self.picker selectRow:2 inComponent:3 animated:YES];
+    
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
     // You just need to set the opacity, radius, and color.
     self.view.layer.shadowOpacity = 0.75f;
