@@ -28,5 +28,6 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 
 @property(nonatomic,strong) NSArray *lengthUnits;
+@property(nonatomic, strong) NSDictionary *lenUnit;
 
 @end

@@ -25,6 +25,7 @@
 @synthesize input4;
 @synthesize pickerTrans;
 @synthesize picker;
+@synthesize lenUnit;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +41,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the views
     
-    self.lengthUnits=[[NSArray alloc]initWithObjects: @"inch",@"foot",@"yard",@"meter",@"dm",@"cm",@"mm",@"km",@"mile",nil];
+    self.lengthUnits=[[NSArray alloc]initWithObjects: @"inch",@"foot",@"yard",@"meter",@"dm",@"cm",@"mm",@"km",@"mile",@"mil",@"point",@"line",@"pica",@"rod",nil];
+    
+    self.lenUnit=[[NSDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
     // You just need to set the opacity, radius, and color.
@@ -133,68 +136,22 @@
 }
 
 - (float)toMeter:(NSString *)unit withNumber:(float) number {
-    
-    if([unit rangeOfString:@"meter"].location!=NSNotFound){
-        return number;
+    if([self.lenUnit objectForKey:unit]){
+        
+        NSString *s=[self.lenUnit objectForKey:unit];
+        float f=s.floatValue;
+        return number/f;
     }
-    if([unit rangeOfString:@"km" ].location!=NSNotFound){
-        return number*1000;
-    }
-    if([unit rangeOfString:@"cm" ].location!=NSNotFound){
-        return number*0.01;
-    }
-    if([unit rangeOfString:@"foot" ].location!=NSNotFound){
-            return number*0.3048;
-    }
-    if([unit rangeOfString:@"inch" ].location!=NSNotFound){
-            return number*0.0254;
-        }
-    if([unit rangeOfString:@"yard" ].location!=NSNotFound){
-            return number*0.9144;
-        }
-    if([unit rangeOfString:@"dm" ].location!=NSNotFound){
-        return number*0.1;
-    }
-    if([unit rangeOfString:@"mile" ].location!=NSNotFound){
-        return number*1609.34399;
-    }
-    
-    if([unit rangeOfString:@"mm" ].location!=NSNotFound){
-        return number*0.001;
-    }
-//    if([unit rangeOfString:@"light year" ].location!=NSNotFound){
-//        return 9460528342560514;
-//    }
+
     return 0.0;
 }
 
 - (float)fromMeter:(NSString *)unit withNumber:(float)number{
-    if([unit rangeOfString:@"meter"].location!=NSNotFound){
-        return number;
-    }
-    if([unit rangeOfString:@"km" ].location!=NSNotFound){
-        return number*0.001;
-    }
-    if([unit rangeOfString:@"dm" ].location!=NSNotFound){
-        return number*10;
-    }
-    if([unit rangeOfString:@"mm" ].location!=NSNotFound){
-        return number*1000;
-    }
-    if([unit rangeOfString:@"cm" ].location!=NSNotFound){
-        return number*100;
-    }
-    if([unit rangeOfString:@"foot" ].location!=NSNotFound){
-        return number*3.2808;
-    }
-    if([unit rangeOfString:@"inch" ].location!=NSNotFound){
-        return number*39.3701;
-    }
-    if([unit rangeOfString:@"yard" ].location!=NSNotFound){
-        return number*1.0936;
-    }
-    if([unit rangeOfString:@"mile" ].location!=NSNotFound){
-        return number*0.000621;
+    if([self.lenUnit objectForKey:unit]){
+        
+        NSString *s=[self.lenUnit objectForKey:unit];
+        float f=s.floatValue;
+        return number*f;
     }
     
     
