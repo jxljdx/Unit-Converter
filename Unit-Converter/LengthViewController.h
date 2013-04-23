@@ -22,7 +22,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *input3;
 @property (strong, nonatomic) IBOutlet UILabel *choice4;
 @property (strong, nonatomic) IBOutlet UITextField *input4;
-- (IBAction)convent:(id)sender;
+- (IBAction)convert:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIView *pickerTrans;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;

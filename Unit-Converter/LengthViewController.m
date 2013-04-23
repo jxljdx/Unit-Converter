@@ -25,7 +25,6 @@
 @synthesize input4;
 @synthesize pickerTrans;
 @synthesize picker;
-@synthesize pickerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +49,10 @@
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     
     if((int)([UIScreen mainScreen].bounds.size.height) == 480){
-    self.pickerTrans.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+        self.pickerTrans.transform = CGAffineTransformMakeScale(1.0f, 0.9f);
+        CGPoint pos = self.pickerTrans.frame.origin;
+        CGPoint newPos = CGPointMake(pos.x, pos.y + 9.5);
+        self.pickerTrans.frame = CGRectMake(newPos.x, newPos.y, self.pickerTrans.frame.size.width, self.pickerTrans.frame.size.height);
     }
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
@@ -70,8 +72,7 @@
     [self setInput3:nil];
     [self setChoice4:nil];
     [self setInput4:nil];
-    
-    [self setPickerView:nil];
+   
     [super viewDidUnload];
 }
 
@@ -200,7 +201,7 @@
     return 0.0;
 }
 
-- (IBAction)convent:(id)sender {
+- (IBAction)convert:(id)sender {
     
     if(sender==self.input1){
        float number=self.input1.text.floatValue;

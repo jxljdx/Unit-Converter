@@ -31,7 +31,7 @@
         <scene sceneID="zg3-WO-Oco">
             <objects>
                 <viewController storyboardIdentifier="Currency" id="LhG-JV-3jp" customClass="CurrencyViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kaz-CZ-tCz">
+                    <view key="view" contentMode="scaleToFill" id="Kaz-CZ-tCz" customClass="UIControl">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -45,16 +45,103 @@
                                                 <action selector="revealMenu:" destination="LhG-JV-3jp" id="JBV-tj-JB5"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Clear" id="ctZ-7m-8Pv">
+                                            <connections>
+                                                <action selector="clearInput:" destination="LhG-JV-3jp" id="sVd-Dg-XKe"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" id="Bw3-PZ-yCg">
+                                <rect key="frame" x="0.0" y="326" width="320" height="221"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" id="GYB-Ba-dHU">
+                                        <rect key="frame" x="0.0" y="5" width="320" height="216"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="LhG-JV-3jp" id="o66-0c-zVJ"/>
+                                            <outlet property="delegate" destination="LhG-JV-3jp" id="ei6-8v-Phm"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="EUR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HTA-fY-02i">
+                                <rect key="frame" x="20" y="113" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="xz8-wN-hwZ">
+                                <rect key="frame" x="20" y="257" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="convert:" destination="LhG-JV-3jp" eventType="editingDidEnd" id="VPj-8b-WUg"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Pwj-6p-1wF">
+                                <rect key="frame" x="20" y="198" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="convert:" destination="LhG-JV-3jp" eventType="editingDidEnd" id="dkZ-8r-XeB"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CNY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1cZ-wz-chs">
+                                <rect key="frame" x="20" y="173" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="HKD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cje-MN-L5G">
+                                <rect key="frame" x="20" y="233" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="USD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zlO-Tx-6dv">
+                                <rect key="frame" x="20" y="54" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="8Nx-G8-wQO">
+                                <rect key="frame" x="20" y="78" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="convert:" destination="LhG-JV-3jp" eventType="editingDidEnd" id="o0w-ZW-4Kb"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="XX2-RY-ARU">
+                                <rect key="frame" x="20" y="138" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="convert:" destination="LhG-JV-3jp" eventType="editingDidEnd" id="H1E-Ue-pP4"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="bgTapped:" destination="LhG-JV-3jp" eventType="touchDown" id="2T8-rd-Yo1"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="choice1" destination="zlO-Tx-6dv" id="2pb-4C-egG"/>
+                        <outlet property="choice2" destination="HTA-fY-02i" id="AbC-IZ-8QG"/>
+                        <outlet property="choice3" destination="1cZ-wz-chs" id="cli-Ua-3kT"/>
+                        <outlet property="choice4" destination="cje-MN-L5G" id="DIC-UH-MmH"/>
+                        <outlet property="input1" destination="8Nx-G8-wQO" id="bqa-ke-se7"/>
+                        <outlet property="input2" destination="XX2-RY-ARU" id="tWz-RN-vuO"/>
+                        <outlet property="input3" destination="Pwj-6p-1wF" id="PPn-vt-r1N"/>
+                        <outlet property="input4" destination="xz8-wN-hwZ" id="pgH-V6-LKK"/>
+                        <outlet property="picker" destination="GYB-Ba-dHU" id="eEM-R5-KpW"/>
+                        <outlet property="pickerTrans" destination="Bw3-PZ-yCg" id="28e-S8-gKK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0LO-IJ-iw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="429" y="-767"/>
+            <point key="canvasLocation" x="422" y="-828"/>
         </scene>
         <!--Length View Controller-->
         <scene sceneID="FQ3-Mz-T1j">
@@ -83,8 +170,8 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="meter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sIu-w8-ABX">
-                                <rect key="frame" x="20" y="62" width="280" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="20" y="59" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="R1J-xM-4cF">
@@ -92,12 +179,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="yz8-fe-hOe"/>
+                                    <action selector="convert:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="bDt-sp-eCq"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMl-z9-k74">
-                                <rect key="frame" x="20" y="121" width="106" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="20" y="118" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="65Z-aa-9br">
@@ -105,12 +192,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="5Mr-Gc-4li"/>
+                                    <action selector="convert:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="AR0-dT-JvS"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="feet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQI-vO-sdJ">
-                                <rect key="frame" x="20" y="181" width="106" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="foot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQI-vO-sdJ">
+                                <rect key="frame" x="20" y="178" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="7ys-dW-FbP">
@@ -118,12 +205,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="8bT-SG-lPl"/>
+                                    <action selector="convert:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="Mec-1f-hju"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="inch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPE-Yv-34G">
-                                <rect key="frame" x="20" y="241" width="106" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="20" y="238" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2Rh-br-Rh6">
@@ -131,16 +218,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="convent:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="D6z-m3-q1i"/>
+                                    <action selector="convert:" destination="7rj-8Q-YKo" eventType="editingDidEnd" id="zpX-Qk-FBe"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" id="QYg-UY-qdy" userLabel="PickerView">
-                                <rect key="frame" x="0.0" y="343" width="320" height="210"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" id="iPa-Qu-cfu">
+                                <rect key="frame" x="0.0" y="332" width="320" height="242"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" id="b55-2S-53S">
+                                    <pickerView contentMode="scaleToFill" id="bNB-qB-sZl">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7rj-8Q-YKo" id="Tcy-91-mak"/>
+                                            <outlet property="delegate" destination="7rj-8Q-YKo" id="Six-je-dSn"/>
+                                        </connections>
                                     </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -160,7 +251,8 @@
                         <outlet property="input2" destination="65Z-aa-9br" id="2V6-5G-7tw"/>
                         <outlet property="input3" destination="7ys-dW-FbP" id="0WX-2S-vqc"/>
                         <outlet property="input4" destination="2Rh-br-Rh6" id="7qm-Xk-IOj"/>
-                        <outlet property="pickerView" destination="QYg-UY-qdy" id="VF3-Zn-e5y"/>
+                        <outlet property="picker" destination="bNB-qB-sZl" id="bR3-Qd-BCI"/>
+                        <outlet property="pickerTrans" destination="iPa-Qu-cfu" id="yEA-VZ-MN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brt-Fg-fmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,6 +297,52 @@
             <point key="canvasLocation" x="770" y="-171"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CurrencyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrencyViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bgTapped:"/>
+                <relationship kind="action" name="clearInput:"/>
+                <relationship kind="action" name="convert:"/>
+                <relationship kind="outlet" name="choice1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="input1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input2" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input3" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input4" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="pickerTrans" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ECSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="InitialSlidingViewController" superclassName="ECSlidingViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialSlidingViewController.h"/>
+        </class>
+        <class className="LengthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LengthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clearInput:"/>
+                <relationship kind="action" name="convert:"/>
+                <relationship kind="outlet" name="choice1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="choice4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="input1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input2" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input3" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="input4" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="pickerTrans" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
