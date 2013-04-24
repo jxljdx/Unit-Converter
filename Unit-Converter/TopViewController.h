@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString* classification;   // Current unit classification
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) NSUserDefaults* userDefaults;
+@property (weak, nonatomic)UITextField *lastInput;
 
 - (IBAction)revealMenu:(id)sender;
 - (IBAction)clearInput:(id)sender;

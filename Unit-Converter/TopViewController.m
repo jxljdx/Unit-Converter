@@ -27,6 +27,7 @@
 @synthesize picker;
 @synthesize pickerTrans;
 @synthesize navigationBar;
+@synthesize lastInput;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,7 +50,7 @@
 	
     // Default setting
     self.units = [[NSArray alloc]initWithObjects: @"inch",@"foot",@"yard",@"meter",@"dm",@"cm",@"mm",@"km",@"mile",@"mil",@"point",@"line",@"pica",@"rod",nil];
-    self.unitMap = [[NSDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
+    self.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
     self.classification = @"Length";
     self.choice1.text = @"meter";
     self.choice2.text = @"inch";
@@ -145,6 +146,17 @@
     label=[[UILabel alloc] initWithFrame:CGRectMake(0,0,50,32)];
     label.backgroundColor=[UIColor clearColor];
     label.text=[self.units objectAtIndex:row];
+    if(label.text.length>=9){
+        label.font=[UIFont systemFontOfSize:10];
+    }
+    else if(label.text.length>=8){
+        label.font=[UIFont systemFontOfSize:12];
+    }else if(label.text.length>=7){
+        label.font=[UIFont systemFontOfSize:13];
+    }
+    else if(label.text.length>=6){
+        label.font=[UIFont systemFontOfSize:14];
+    }
     return label;
     
 }
@@ -153,54 +165,101 @@
     
     if(component==0){
         self.choice1.text=[self.units objectAtIndex:row];
+        if(self.lastInput==self.input1){
+            [self convert:self.input1];
+        }else{
         [self convertByLabel:self.choice1.text withOriginal:self.choice2.text andValue:self.input2.text changeInput:self.input1];
-
+        }
     }else if(component==1){
         self.choice2.text=[self.units objectAtIndex:row];
+        if(self.lastInput==self.input2){
+            [self convert:self.input2];
+        }else{
         [self convertByLabel:self.choice2.text withOriginal:self.choice1.text andValue:self.input1.text changeInput:self.input2];
+        }
 
     }else if(component==2){
         self.choice3.text=[self.units objectAtIndex:row];
+        if(self.lastInput==self.input3){
+            [self convert:self.input3];
+        }else{
         [self convertByLabel:self.choice3.text withOriginal:self.choice1.text andValue:self.input1.text changeInput:self.input3];
+        }
 
     }else{
         self.choice4.text=[self.units objectAtIndex:row];
+        if(self.lastInput==self.input4){
+            [self convert:self.input4];
+        }else{
         [self convertByLabel:self.choice4.text withOriginal:self.choice1.text andValue:self.input1.text changeInput:self.input4];
+        }
     }
 }
 
 
 
-- (float)toUnit:(NSString *)unit withNumber:(float) number {
+- (double)toUnit:(NSString *)unit withNumber:(double) number {
+    
+    if([self.classification compare:@"Temperature"]==0){
+        if([unit compare:@"°F"]==0){
+            return number;
+        }else if([unit compare:@"°C"]==0){
+            return number*1.8+32;
+        }else if([unit compare:@" K"]==0){
+            return (number*1.8-459.67);
+        }else if([unit compare:@"°Ra"]==0){
+            return number-459.67;
+        }else if([unit compare:@"°Re"]==0){
+            return number*2.25+32;
+        }
+    }
+    
+    else{
     if([self.unitMap objectForKey:unit]){
         
         NSString *s=[self.unitMap objectForKey:unit];
-        float f=s.floatValue;
+        double f=s.doubleValue;
         return number/f;
     }
-    
+    }
     return 0.0;
 }
 
 
-- (float)fromUnit:(NSString *)unit withNumber:(float)number{
+- (double)fromUnit:(NSString *)unit withNumber:(double)number{
+    if([self.classification compare:@"Temperature"]==0){
+        if([unit compare:@"°F"]==0){
+            return number;
+        }else if([unit compare:@"°C"]==0){
+            return (number-32)/1.8;
+        }else if([unit compare:@" K"]==0){
+            return (number+459.67)/1.8;
+        }else if([unit compare:@"°Ra"]==0){
+            return number+459.67;
+        }else if([unit compare:@"°Re"]==0){
+            return (number-32)/2.25;
+        }
+    }
+    else{
+    
     if([self.unitMap objectForKey:unit]){
         
         NSString *s=[self.unitMap objectForKey:unit];
-        float f=s.floatValue;
+        double f=s.doubleValue;
         return number*f;
     }
     
+    }
     
     return 0.0;
 }
 
 - (void) convertByLabel:(NSString *)label withOriginal:(NSString *) base andValue:(NSString *)value changeInput:(UITextField *) target{
    
-    float number=value.floatValue;
+    double number=value.doubleValue;
     if(number!=0.0){
-        float re;
-        float temp=[self toUnit:base withNumber:number];
+        double re;
+        double temp=[self toUnit:base withNumber:number];
         re=[self fromUnit:label withNumber:temp];
         NSString *s=[NSString stringWithFormat:@"%f",re];
        
@@ -211,13 +270,14 @@
 #pragma mark - convertion handling
 
 - (IBAction)convert:(UITextField *)sender {
-
+    self.lastInput=sender;
+  
     if(sender==self.input1){
-        float number=self.input1.text.floatValue;
+        double number=self.input1.text.doubleValue;
         if(number!=0.0){
-            float re2,re3,re4;
+            double re2,re3,re4;
            
-            float temp=[self toUnit:self.choice1.text withNumber:number];
+            double temp=[self toUnit:self.choice1.text withNumber:number];
             re2=[self fromUnit:self.choice2.text withNumber:temp];
             re3=[self fromUnit:self.choice3.text withNumber:temp];
             re4=[self fromUnit:self.choice4.text withNumber:temp];
@@ -230,10 +290,10 @@
             self.input4.text=s4;
         }
     }else if(sender==self.input2){
-        float number=self.input2.text.floatValue;
+        double number=self.input2.text.doubleValue;
         if(number!=0.0){
-            float re1,re3,re4;
-            float temp=[self toUnit:self.choice2.text withNumber:number];
+            double re1,re3,re4;
+            double temp=[self toUnit:self.choice2.text withNumber:number];
             re1=[self fromUnit:self.choice1.text withNumber:temp];
             re3=[self fromUnit:self.choice3.text withNumber:temp];
             re4=[self fromUnit:self.choice4.text withNumber:temp];
@@ -246,11 +306,11 @@
             self.input4.text=s4;
         }
     }else if(sender==self.input3){
-        float number=self.input3.text.floatValue;
+        double number=self.input3.text.doubleValue;
         if(number!=0.0){
-            float re1,re2,re4;
+            double re1,re2,re4;
             
-            float temp=[self toUnit:self.choice3.text withNumber:number];
+            double temp=[self toUnit:self.choice3.text withNumber:number];
             re1=[self fromUnit:self.choice1.text withNumber:temp];
             re2=[self fromUnit:self.choice2.text withNumber:temp];
             re4=[self fromUnit:self.choice4.text withNumber:temp];
@@ -263,11 +323,11 @@
             self.input4.text=s4;
         }
     }else{
-        float number=self.input4.text.floatValue;
+        double number=self.input4.text.doubleValue;
         if(number!=0.0){
-            float re1,re2,re3;
+            double re1,re2,re3;
        
-            float temp=[self toUnit:self.choice4.text withNumber:number];
+            double temp=[self toUnit:self.choice4.text withNumber:number];
             re1=[self fromUnit:self.choice1.text withNumber:temp];
             re2=[self fromUnit:self.choice2.text withNumber:temp];
             re3=[self fromUnit:self.choice3.text withNumber:temp];
@@ -280,6 +340,7 @@
             self.input3.text=s3;
         }
     }
+    
    
 }
 
