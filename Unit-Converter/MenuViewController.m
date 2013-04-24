@@ -16,6 +16,7 @@
 
 @implementation MenuViewController
 @synthesize menuItems = _menuItems;
+@synthesize images;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,9 +29,8 @@
 
 - (void)awakeFromNib
 {
-    self.menuItems = [NSArray arrayWithObjects:@"Currency", @"Length", @"Area", @"Degree", @"Volume", @"Mass",
-                      @"Temperature", @"Velocity", @"Pressure", @"Power", @"Energy", @"Force", @"Time", @"Iuminance",
-                      @"Density", @"Data storage", nil];
+    self.menuItems = [NSArray arrayWithObjects:@"Currency", @"Length",@"Temperature", @"Weight",@"Area", @"Angle", @"Density",@"Energy", @"Force", @"Volume", @"Pressure", @"Power", @"Time",  @"Data storage", nil];
+    self.images=[[NSArray alloc] initWithObjects:@"currency.jpg", @"ruler.png",@"temperature.png",@"weight.png",@"area.png",@"angle.png",@"density.png",@"energy.png",@"force.png",@"volume.png",@"pressure.png",@"power.png",@"time.png",@"data.png",nil];
 }
 
 - (void)viewDidLoad
@@ -53,6 +53,8 @@
     return self.menuItems.count;
 }
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"MenuItemCell";
@@ -62,7 +64,7 @@
     }
     
     cell.textLabel.text = [self.menuItems objectAtIndex:indexPath.row];
-    
+    cell.imageView.image = [UIImage imageNamed:[self.images objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -110,15 +112,17 @@
     }
     
     // Set units and units-map based on chosen classification, such as Length
+ 
     
     if ([identifier compare:@"Length"] == 0) {
         [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
             top.units = [[NSArray alloc]initWithObjects: @"inch",@"foot",@"yard",@"meter",@"dm",@"cm",@"mm",@"km",@"mile",@"mil",@"point",@"line",@"pica",@"rod",nil];
             top.unitMap = [[NSDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
             top.classification = identifier;
+           top.navigationBar.topItem.title = @"Length";
             top.choice1.text = @"meter";
             top.choice2.text = @"inch";
-            top.choice3.text = @"feet";
+            top.choice3.text = @"foot";
             top.choice4.text = @"yard";
             [top.picker selectRow:3 inComponent:0 animated:YES];
             [top.picker selectRow:0 inComponent:1 animated:YES];
@@ -130,10 +134,27 @@
         }];
     } else if ([identifier compare:@"Currency"] == 0) {
         
+        top.userDefaults = [NSUserDefaults standardUserDefaults];
+        top.units=[[NSArray alloc]initWithObjects:@"EUR",@"USD",@"GBP",@"INR",@"AUD",@"CAD",@"AED",@"CHF",@"CNY",@"JPY",@"MYR",@"HKD", nil];
+        
+        top.classification = identifier;
+        top.navigationBar.topItem.title = @"Currency";
+        top.choice1.text = @"EUR";
+        top.choice2.text = @"USD";
+        top.choice3.text = @"GBP";
+        top.choice4.text = @"CNY";
+        [top.picker selectRow:0 inComponent:0 animated:YES];
+        [top.picker selectRow:1 inComponent:1 animated:YES];
+        [top.picker selectRow:2 inComponent:2 animated:YES];
+        [top.picker selectRow:8 inComponent:3 animated:YES];
+        
+        [top.picker reloadAllComponents];
+        [self.slidingViewController resetTopView];
+        
     } else if ([identifier compare:@"Area"] == 0) {
         [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
             top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
-            top.unitMap = [[NSDictionary alloc] initWithObjectsAndKeys:@"1.1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.unitMap = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
             top.classification = identifier;
             top.choice1.text = @"a";
             top.choice2.text = @"b";

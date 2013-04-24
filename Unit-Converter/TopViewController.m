@@ -26,6 +26,7 @@
 @synthesize units;
 @synthesize picker;
 @synthesize pickerTrans;
+@synthesize navigationBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,26 +53,28 @@
     self.classification = @"Length";
     self.choice1.text = @"meter";
     self.choice2.text = @"inch";
-    self.choice3.text = @"feet";
+    self.choice3.text = @"foot";
     self.choice4.text = @"yard";
     [self.picker selectRow:3 inComponent:0 animated:YES];
     [self.picker selectRow:0 inComponent:1 animated:YES];
     [self.picker selectRow:1 inComponent:2 animated:YES];
     [self.picker selectRow:2 inComponent:3 animated:YES];
     
+    self.navigationBar.topItem.title=@"Length";
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
     // You just need to set the opacity, radius, and color.
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    
-    if((int)([UIScreen mainScreen].bounds.size.height) == 480){
-        self.pickerTrans.transform = CGAffineTransformMakeScale(1.0f, 0.9f);
-        CGPoint pos = self.pickerTrans.frame.origin;
-        CGPoint newPos = CGPointMake(pos.x, pos.y + 9.5);
-        self.pickerTrans.frame = CGRectMake(newPos.x, newPos.y, self.pickerTrans.frame.size.width, self.pickerTrans.frame.size.height);
-    }
+//    
+//    if((int)([UIScreen mainScreen].bounds.size.height) == 480){
+//        NSLog(@"3.5inch");
+//        self.pickerTrans.transform = CGAffineTransformMakeScale(1.0f, 0.9f);
+//        CGPoint pos = self.pickerTrans.frame.origin;
+//        CGPoint newPos = CGPointMake(pos.x, pos.y + 9.5);
+//        self.pickerTrans.frame = CGRectMake(newPos.x, newPos.y, self.pickerTrans.frame.size.width, self.pickerTrans.frame.size.height);
+//    }
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -100,6 +103,8 @@
     [self setClassification:nil];
     [self setUnitMap:nil];
     [self setUnits:nil];
+    [self setNavigationBar:nil];
+    [self setInput4:nil];
     [super viewDidUnload];
 }
 
@@ -156,9 +161,155 @@
     }
 }
 
+
+
+- (float)toUnit:(NSString *)unit withNumber:(float) number {
+    if([self.unitMap objectForKey:unit]){
+        
+        NSString *s=[self.unitMap objectForKey:unit];
+        float f=s.floatValue;
+        return number/f;
+    }
+    
+    return 0.0;
+}
+
+- (float)fromUnit:(NSString *)unit withNumber:(float)number{
+    if([self.unitMap objectForKey:unit]){
+        
+        NSString *s=[self.unitMap objectForKey:unit];
+        float f=s.floatValue;
+        return number*f;
+    }
+    
+    
+    return 0.0;
+}
+
 #pragma mark - convertion handling
 
 - (IBAction)convert:(UITextField *)sender {
+
+    if(sender==self.input1){
+        float number=self.input1.text.floatValue;
+        if(number!=0.0){
+            float re2,re3,re4;
+           
+            float temp=[self toUnit:self.choice1.text withNumber:number];
+            re2=[self fromUnit:self.choice2.text withNumber:temp];
+            re3=[self fromUnit:self.choice3.text withNumber:temp];
+            re4=[self fromUnit:self.choice4.text withNumber:temp];
+            
+            NSString *s2=[NSString stringWithFormat:@"%.4f",re2];
+            NSString *s3=[NSString stringWithFormat:@"%.4f",re3];
+            NSString *s4=[NSString stringWithFormat:@"%.4f",re4];
+            self.input2.text=s2;
+            self.input3.text=s3;
+            self.input4.text=s4;
+        }
+    }else if(sender==self.input2){
+        float number=self.input2.text.floatValue;
+        if(number!=0.0){
+            float re1,re3,re4;
+            float temp=[self toUnit:self.choice2.text withNumber:number];
+            re1=[self fromUnit:self.choice1.text withNumber:temp];
+            re3=[self fromUnit:self.choice3.text withNumber:temp];
+            re4=[self fromUnit:self.choice4.text withNumber:temp];
+            
+            NSString *s1=[NSString stringWithFormat:@"%.4f",re1];
+            NSString *s3=[NSString stringWithFormat:@"%.4f",re3];
+            NSString *s4=[NSString stringWithFormat:@"%.4f",re4];
+            self.input1.text=s1;
+            self.input3.text=s3;
+            self.input4.text=s4;
+        }
+    }else if(sender==self.input3){
+        float number=self.input3.text.floatValue;
+        if(number!=0.0){
+            float re1,re2,re4;
+            
+            float temp=[self toUnit:self.choice3.text withNumber:number];
+            re1=[self fromUnit:self.choice1.text withNumber:temp];
+            re2=[self fromUnit:self.choice2.text withNumber:temp];
+            re4=[self fromUnit:self.choice4.text withNumber:temp];
+            
+            NSString *s1=[NSString stringWithFormat:@"%.4f",re1];
+            NSString *s2=[NSString stringWithFormat:@"%.4f",re2];
+            NSString *s4=[NSString stringWithFormat:@"%.4f",re4];
+            self.input1.text=s1;
+            self.input2.text=s2;
+            self.input4.text=s4;
+        }
+    }else{
+        float number=self.input4.text.floatValue;
+        if(number!=0.0){
+            float re1,re2,re3;
+       
+            float temp=[self toUnit:self.choice4.text withNumber:number];
+            re1=[self fromUnit:self.choice1.text withNumber:temp];
+            re2=[self fromUnit:self.choice2.text withNumber:temp];
+            re3=[self fromUnit:self.choice3.text withNumber:temp];
+            
+            NSString *s1=[NSString stringWithFormat:@"%.4f",re1];
+            NSString *s2=[NSString stringWithFormat:@"%.4f",re2];
+            NSString *s3=[NSString stringWithFormat:@"%.4f",re3];
+            self.input1.text=s1;
+            self.input2.text=s2;
+            self.input3.text=s3;
+        }
+    }
+    
+}
+
+- (void)loadDataFromXML {
+    
+    
+    NSURL *url= [[NSURL alloc] initWithString:@"http://www.ecb.int/stats/eurofxref/eurofxref-daily.xml"];
+    
+    NSString *URLString = [NSString stringWithContentsOfURL:url];
+    if(URLString==nil){
+        // Connection failed
+        
+        for(int i=0;i<[self.units count];i++){
+            NSString *s=[self.units objectAtIndex:i];
+            [self.unitMap setValue:[self.userDefaults objectForKey:s] forKey:s];
+        }
+    }
+    else{
+        NSXMLParser* parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+        [parser setDelegate:self];
+        [parser parse];
+    }
+    
+    [self.unitMap setValue:@"1" forKey:@"EUR"];
+    NSString *time=[self.userDefaults objectForKey:@"time"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Last Update"
+                                                    message:time
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict{
+    
+    if ([elementName isEqualToString:@"Cube"]) {
+        NSString* time= [attributeDict valueForKey:@"time"];   //get update time
+        if(time){
+            [self.userDefaults setValue:time forKey:@"time"];
+            [self.userDefaults synchronize];
+            
+        }
+        
+        NSString* cur = [attributeDict valueForKey:@"currency"];  //get curency rate
+        NSString* rate = [attributeDict valueForKey:@"rate"];
+        // NSLog(@"currency: %@, rate: %@", cur, rate);
+        if(cur){
+            [self.unitMap setValue:rate forKey:cur];
+            [self.userDefaults setValue:rate forKey:cur];
+            [self.userDefaults synchronize];
+        }
+    }
     
 }
 

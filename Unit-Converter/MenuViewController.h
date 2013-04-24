@@ -11,5 +11,6 @@
 @class TopViewController;
 
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITabBarControllerDelegate>
+@property(strong, nonatomic) NSArray *images;
 
 @end

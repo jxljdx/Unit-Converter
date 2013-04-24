@@ -23,8 +23,21 @@
 		2D7F33E2172074590092D6C3 /* LengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E1172074590092D6C3 /* LengthViewController.m */; };
 		2D7F33E5172076400092D6C3 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E4172076400092D6C3 /* MenuViewController.m */; };
 		2D7F33E817207D640092D6C3 /* CurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F33E717207D640092D6C3 /* CurrencyViewController.m */; };
-		2D7F33EB1720AC5C0092D6C3 /* rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F33EA1720AC5C0092D6C3 /* rounded.png */; };
 		2DB85829172722AE001F21EA /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB85828172722AE001F21EA /* TopViewController.m */; };
+		E9EBAE5617273CC500711206 /* angle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4817273CC500711206 /* angle.png */; };
+		E9EBAE5717273CC500711206 /* area.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4917273CC500711206 /* area.png */; };
+		E9EBAE5817273CC500711206 /* currency.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4A17273CC500711206 /* currency.jpg */; };
+		E9EBAE5917273CC500711206 /* data.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4B17273CC500711206 /* data.png */; };
+		E9EBAE5A17273CC500711206 /* density.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4C17273CC500711206 /* density.png */; };
+		E9EBAE5B17273CC500711206 /* energy.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4D17273CC500711206 /* energy.png */; };
+		E9EBAE5C17273CC500711206 /* force.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4E17273CC500711206 /* force.png */; };
+		E9EBAE5D17273CC500711206 /* power.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE4F17273CC500711206 /* power.png */; };
+		E9EBAE5E17273CC500711206 /* pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE5017273CC500711206 /* pressure.png */; };
+		E9EBAE5F17273CC500711206 /* ruler.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE5117273CC500711206 /* ruler.png */; };
+		E9EBAE6017273CC500711206 /* temperature.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE5217273CC500711206 /* temperature.png */; };
+		E9EBAE6117273CC500711206 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE5317273CC500711206 /* time.png */; };
+		E9EBAE6217273CC500711206 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE5417273CC500711206 /* volume.png */; };
+		E9EBAE6317273CC500711206 /* weight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBAE5517273CC500711206 /* weight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,9 +67,22 @@
 		2D7F33E4172076400092D6C3 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		2D7F33E617207D640092D6C3 /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyViewController.h; sourceTree = "<group>"; };
 		2D7F33E717207D640092D6C3 /* CurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyViewController.m; sourceTree = "<group>"; };
-		2D7F33EA1720AC5C0092D6C3 /* rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded.png; sourceTree = "<group>"; };
 		2DB85827172722AE001F21EA /* TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
 		2DB85828172722AE001F21EA /* TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
+		E9EBAE4817273CC500711206 /* angle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angle.png; sourceTree = "<group>"; };
+		E9EBAE4917273CC500711206 /* area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = area.png; sourceTree = "<group>"; };
+		E9EBAE4A17273CC500711206 /* currency.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = currency.jpg; sourceTree = "<group>"; };
+		E9EBAE4B17273CC500711206 /* data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = data.png; sourceTree = "<group>"; };
+		E9EBAE4C17273CC500711206 /* density.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = density.png; sourceTree = "<group>"; };
+		E9EBAE4D17273CC500711206 /* energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy.png; sourceTree = "<group>"; };
+		E9EBAE4E17273CC500711206 /* force.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = force.png; sourceTree = "<group>"; };
+		E9EBAE4F17273CC500711206 /* power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power.png; sourceTree = "<group>"; };
+		E9EBAE5017273CC500711206 /* pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pressure.png; sourceTree = "<group>"; };
+		E9EBAE5117273CC500711206 /* ruler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruler.png; sourceTree = "<group>"; };
+		E9EBAE5217273CC500711206 /* temperature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperature.png; sourceTree = "<group>"; };
+		E9EBAE5317273CC500711206 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		E9EBAE5417273CC500711206 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
+		E9EBAE5517273CC500711206 /* weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +129,7 @@
 		2D7F33B417204C7D0092D6C3 /* Unit-Converter */ = {
 			isa = PBXGroup;
 			children = (
-				2D7F33E91720AC440092D6C3 /* Resources */,
+				E9EBAE4717273CC500711206 /* Resources */,
 				2D7F33D9172071B20092D6C3 /* Controllers */,
 				2D7F33D1172070820092D6C3 /* Vendor */,
 				2D7F33BD17204C7D0092D6C3 /* AppDelegate.h */,
@@ -164,12 +190,25 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		2D7F33E91720AC440092D6C3 /* Resources */ = {
+		E9EBAE4717273CC500711206 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2D7F33EA1720AC5C0092D6C3 /* rounded.png */,
+				E9EBAE4817273CC500711206 /* angle.png */,
+				E9EBAE4917273CC500711206 /* area.png */,
+				E9EBAE4A17273CC500711206 /* currency.jpg */,
+				E9EBAE4B17273CC500711206 /* data.png */,
+				E9EBAE4C17273CC500711206 /* density.png */,
+				E9EBAE4D17273CC500711206 /* energy.png */,
+				E9EBAE4E17273CC500711206 /* force.png */,
+				E9EBAE4F17273CC500711206 /* power.png */,
+				E9EBAE5017273CC500711206 /* pressure.png */,
+				E9EBAE5117273CC500711206 /* ruler.png */,
+				E9EBAE5217273CC500711206 /* temperature.png */,
+				E9EBAE5317273CC500711206 /* time.png */,
+				E9EBAE5417273CC500711206 /* volume.png */,
+				E9EBAE5517273CC500711206 /* weight.png */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +267,20 @@
 				2D7F33C317204C7D0092D6C3 /* Default@2x.png in Resources */,
 				2D7F33C517204C7D0092D6C3 /* Default-568h@2x.png in Resources */,
 				2D7F33C817204C7D0092D6C3 /* MainStoryboard.storyboard in Resources */,
-				2D7F33EB1720AC5C0092D6C3 /* rounded.png in Resources */,
+				E9EBAE5617273CC500711206 /* angle.png in Resources */,
+				E9EBAE5717273CC500711206 /* area.png in Resources */,
+				E9EBAE5817273CC500711206 /* currency.jpg in Resources */,
+				E9EBAE5917273CC500711206 /* data.png in Resources */,
+				E9EBAE5A17273CC500711206 /* density.png in Resources */,
+				E9EBAE5B17273CC500711206 /* energy.png in Resources */,
+				E9EBAE5C17273CC500711206 /* force.png in Resources */,
+				E9EBAE5D17273CC500711206 /* power.png in Resources */,
+				E9EBAE5E17273CC500711206 /* pressure.png in Resources */,
+				E9EBAE5F17273CC500711206 /* ruler.png in Resources */,
+				E9EBAE6017273CC500711206 /* temperature.png in Resources */,
+				E9EBAE6117273CC500711206 /* time.png in Resources */,
+				E9EBAE6217273CC500711206 /* volume.png in Resources */,
+				E9EBAE6317273CC500711206 /* weight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
