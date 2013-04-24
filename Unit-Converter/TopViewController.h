@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *pickerTrans;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) NSArray* units;
-@property (strong, nonatomic) NSDictionary* unitMap;
+@property (strong, nonatomic) NSMutableDictionary* unitMap;
 @property (strong, nonatomic) NSString* classification;   // Current unit classification
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) NSUserDefaults* userDefaults;
@@ -31,5 +31,6 @@
 - (IBAction)clearInput:(id)sender;
 - (IBAction)convert:(UITextField *)sender;
 - (IBAction)bgTapped:(id)sender;
+- (void)loadDataFromXML;
 
 @end

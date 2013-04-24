@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -170,12 +170,12 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="choice2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tel-r9-lQ0">
-                                <rect key="frame" x="20" y="121" width="59" height="24"/>
+                                <rect key="frame" x="20" y="116" width="280" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="AKL-w4-jxZ">
-                                <rect key="frame" x="87" y="211" width="213" height="30"/>
+                                <rect key="frame" x="20" y="262" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -183,7 +183,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="yuP-SU-cBb">
-                                <rect key="frame" x="87" y="166" width="213" height="30"/>
+                                <rect key="frame" x="20" y="202" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -191,22 +191,22 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="choice3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GkY-mQ-Lrk">
-                                <rect key="frame" x="20" y="167" width="59" height="21"/>
+                                <rect key="frame" x="20" y="176" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="choice4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Axa-JG-qYu">
-                                <rect key="frame" x="20" y="214" width="59" height="21"/>
+                                <rect key="frame" x="20" y="236" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="choice1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="35n-ux-2RB">
-                                <rect key="frame" x="20" y="76" width="59" height="21"/>
+                                <rect key="frame" x="20" y="56" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="yp1-DT-LVn">
-                                <rect key="frame" x="87" y="76" width="213" height="30"/>
+                                <rect key="frame" x="20" y="82" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -214,7 +214,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Bqc-BJ-Z29">
-                                <rect key="frame" x="87" y="121" width="213" height="30"/>
+                                <rect key="frame" x="20" y="142" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -421,7 +421,6 @@
                 <relationship kind="action" name="bgTapped:"/>
                 <relationship kind="action" name="clearInput:"/>
                 <relationship kind="action" name="convert:"/>
-                <relationship kind="action" name="revealMenu:"/>
                 <relationship kind="outlet" name="choice1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="choice2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="choice3" candidateClass="UILabel"/>
@@ -443,10 +442,8 @@
         <class className="LengthViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LengthViewController.h"/>
             <relationships>
-                <relationship kind="action" name="bgTaped:"/>
                 <relationship kind="action" name="clearInput:"/>
                 <relationship kind="action" name="convert:"/>
-                <relationship kind="action" name="revealMenu:"/>
                 <relationship kind="outlet" name="choice1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="choice2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="choice3" candidateClass="UILabel"/>

@@ -29,7 +29,7 @@
 
 - (void)awakeFromNib
 {
-    self.menuItems = [NSArray arrayWithObjects:@"Currency", @"Length",@"Temperature", @"Weight",@"Area", @"Angle", @"Density",@"Energy", @"Force", @"Volume", @"Pressure", @"Power", @"Time",  @"Data storage", nil];
+    self.menuItems = [NSArray arrayWithObjects:@"Currency", @"Length",@"Temperature", @"Weight",@"Area", @"Angle", @"Density",@"Energy", @"Force", @"Volume", @"Pressure", @"Power", @"Time",  @"Data Storage", nil];
     self.images=[[NSArray alloc] initWithObjects:@"currency.jpg", @"ruler.png",@"temperature.png",@"weight.png",@"area.png",@"angle.png",@"density.png",@"energy.png",@"force.png",@"volume.png",@"pressure.png",@"power.png",@"time.png",@"data.png",nil];
 }
 
@@ -117,7 +117,7 @@
     if ([identifier compare:@"Length"] == 0) {
         [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
             top.units = [[NSArray alloc]initWithObjects: @"inch",@"foot",@"yard",@"meter",@"dm",@"cm",@"mm",@"km",@"mile",@"mil",@"point",@"line",@"pica",@"rod",nil];
-            top.unitMap = [[NSDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"39.37",@"inch",@"3.2808",@"foot",@"1.0936",@"yard",@"1",@"meter",@"10",@"dm",@"100",@"cm",@"1000",@"mm",@"0.001",@"km",@"0.00062137",@"mile",@"39370",@"mil",@"2834.6",@"point",@"472.44",@"line",@"236.22",@"pica",@"0.19884",@"rod",nil];
             top.classification = identifier;
            top.navigationBar.topItem.title = @"Length";
             top.choice1.text = @"meter";
@@ -136,7 +136,7 @@
         
         top.userDefaults = [NSUserDefaults standardUserDefaults];
         top.units=[[NSArray alloc]initWithObjects:@"EUR",@"USD",@"GBP",@"INR",@"AUD",@"CAD",@"AED",@"CHF",@"CNY",@"JPY",@"MYR",@"HKD", nil];
-        
+        top.unitMap=[[NSMutableDictionary alloc]init];
         top.classification = identifier;
         top.navigationBar.topItem.title = @"Currency";
         top.choice1.text = @"EUR";
@@ -147,6 +147,7 @@
         [top.picker selectRow:1 inComponent:1 animated:YES];
         [top.picker selectRow:2 inComponent:2 animated:YES];
         [top.picker selectRow:8 inComponent:3 animated:YES];
+        [top loadDataFromXML];
         
         [top.picker reloadAllComponents];
         [self.slidingViewController resetTopView];
@@ -154,7 +155,8 @@
     } else if ([identifier compare:@"Area"] == 0) {
         [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
             top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
-            top.unitMap = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
             top.classification = identifier;
             top.choice1.text = @"a";
             top.choice2.text = @"b";
@@ -168,7 +170,225 @@
             [top.picker reloadAllComponents];
             [self.slidingViewController resetTopView];
         }];
-    } // TODO
+    } else if ([identifier compare:@"Temperature"] == 0) {
+    [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+        top.units = [[NSArray alloc]initWithObjects: @"C",@"F",@"K",@"Re",@"Ra",nil];
+        
+        top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"C",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+        top.classification = identifier;
+        top.choice1.text = @"a";
+        top.choice2.text = @"b";
+        top.choice3.text = @"c";
+        top.choice4.text = @"d";
+        [top.picker selectRow:0 inComponent:0 animated:YES];
+        [top.picker selectRow:1 inComponent:1 animated:YES];
+        [top.picker selectRow:2 inComponent:2 animated:YES];
+        [top.picker selectRow:3 inComponent:3 animated:YES];
+        
+        [top.picker reloadAllComponents];
+        [self.slidingViewController resetTopView];
+    }];
+    }else if ([identifier compare:@"Weight"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Area"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Angle"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Density"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Energy"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Force"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Volume"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Pressure"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"pa",@"atm",@"bar",@"mBar",@"microBar",@"psi",@"ksf",@"ksi",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"pa",@"0.00001",@"atm",@"0.00001",@"bar",@"0.01",@"mBar",@"10",@"microBar",@"0.000145",@"psi",@"0.000021",@"ksf",@"0.0000001",@"ksi",nil];
+            top.classification = identifier;
+            top.choice1.text = @"pa";
+            top.choice2.text = @"bar";
+            top.choice3.text = @"psi";
+            top.choice4.text = @"ksf";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:2 inComponent:1 animated:YES];
+            [top.picker selectRow:5 inComponent:2 animated:YES];
+            [top.picker selectRow:6 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Power"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Time"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"year",@"week",@"day",@"hour",@"min",@"sec",@"ms",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"0.000002",@"year",@"0.000099",@"week",@"0.000694",@"day",@"0.016667",@"hour",@"1",@"min",@"60",@"sec",@"60000",@"ms",nil];
+            top.classification = identifier;
+            top.choice1.text = @"min";
+            top.choice2.text = @"sec";
+            top.choice3.text = @"hour";
+            top.choice4.text = @"day";
+            [top.picker selectRow:4 inComponent:0 animated:YES];
+            [top.picker selectRow:5 inComponent:1 animated:YES];
+            [top.picker selectRow:3 inComponent:2 animated:YES];
+            [top.picker selectRow:2 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }else if ([identifier compare:@"Data Storage"] == 0) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            top.units = [[NSArray alloc]initWithObjects: @"a",@"b",@"c",@"d",nil];
+            
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"a",@"2",@"b",@"3",@"c",@"4",@"d",nil];
+            top.classification = identifier;
+            top.choice1.text = @"a";
+            top.choice2.text = @"b";
+            top.choice3.text = @"c";
+            top.choice4.text = @"d";
+            [top.picker selectRow:0 inComponent:0 animated:YES];
+            [top.picker selectRow:1 inComponent:1 animated:YES];
+            [top.picker selectRow:2 inComponent:2 animated:YES];
+            [top.picker selectRow:3 inComponent:3 animated:YES];
+            
+            [top.picker reloadAllComponents];
+            [self.slidingViewController resetTopView];
+        }];
+    }
+
+
 }
 
 @end

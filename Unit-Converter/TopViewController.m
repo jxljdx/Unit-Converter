@@ -67,14 +67,14 @@
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-//    
-//    if((int)([UIScreen mainScreen].bounds.size.height) == 480){
-//        NSLog(@"3.5inch");
-//        self.pickerTrans.transform = CGAffineTransformMakeScale(1.0f, 0.9f);
-//        CGPoint pos = self.pickerTrans.frame.origin;
-//        CGPoint newPos = CGPointMake(pos.x, pos.y + 9.5);
-//        self.pickerTrans.frame = CGRectMake(newPos.x, newPos.y, self.pickerTrans.frame.size.width, self.pickerTrans.frame.size.height);
-//    }
+    
+    if((int)([UIScreen mainScreen].bounds.size.height) == 480){
+        NSLog(@"3.5inch");
+        self.pickerTrans.transform = CGAffineTransformMakeScale(1.0f, 0.9f);
+        CGPoint pos = self.pickerTrans.frame.origin;
+        CGPoint newPos = CGPointMake(pos.x, pos.y + 11.5);
+        self.pickerTrans.frame = CGRectMake(newPos.x, newPos.y, self.pickerTrans.frame.size.width, self.pickerTrans.frame.size.height);
+    }
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -150,14 +150,22 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
     if(component==0){
         self.choice1.text=[self.units objectAtIndex:row];
+        [self convertByLabel:self.choice1.text withOriginal:self.choice2.text andValue:self.input2.text changeInput:self.input1];
+
     }else if(component==1){
         self.choice2.text=[self.units objectAtIndex:row];
+        [self convertByLabel:self.choice2.text withOriginal:self.choice1.text andValue:self.input1.text changeInput:self.input2];
+
     }else if(component==2){
         self.choice3.text=[self.units objectAtIndex:row];
+        [self convertByLabel:self.choice3.text withOriginal:self.choice1.text andValue:self.input1.text changeInput:self.input3];
+
     }else{
         self.choice4.text=[self.units objectAtIndex:row];
+        [self convertByLabel:self.choice4.text withOriginal:self.choice1.text andValue:self.input1.text changeInput:self.input4];
     }
 }
 
@@ -174,6 +182,7 @@
     return 0.0;
 }
 
+
 - (float)fromUnit:(NSString *)unit withNumber:(float)number{
     if([self.unitMap objectForKey:unit]){
         
@@ -184,6 +193,19 @@
     
     
     return 0.0;
+}
+
+- (void) convertByLabel:(NSString *)label withOriginal:(NSString *) base andValue:(NSString *)value changeInput:(UITextField *) target{
+   
+    float number=value.floatValue;
+    if(number!=0.0){
+        float re;
+        float temp=[self toUnit:base withNumber:number];
+        re=[self fromUnit:label withNumber:temp];
+        NSString *s=[NSString stringWithFormat:@"%f",re];
+       
+        target.text=s;
+    }
 }
 
 #pragma mark - convertion handling
@@ -200,9 +222,9 @@
             re3=[self fromUnit:self.choice3.text withNumber:temp];
             re4=[self fromUnit:self.choice4.text withNumber:temp];
             
-            NSString *s2=[NSString stringWithFormat:@"%.4f",re2];
-            NSString *s3=[NSString stringWithFormat:@"%.4f",re3];
-            NSString *s4=[NSString stringWithFormat:@"%.4f",re4];
+            NSString *s2=[NSString stringWithFormat:@"%f",re2];
+            NSString *s3=[NSString stringWithFormat:@"%f",re3];
+            NSString *s4=[NSString stringWithFormat:@"%f",re4];
             self.input2.text=s2;
             self.input3.text=s3;
             self.input4.text=s4;
@@ -216,9 +238,9 @@
             re3=[self fromUnit:self.choice3.text withNumber:temp];
             re4=[self fromUnit:self.choice4.text withNumber:temp];
             
-            NSString *s1=[NSString stringWithFormat:@"%.4f",re1];
-            NSString *s3=[NSString stringWithFormat:@"%.4f",re3];
-            NSString *s4=[NSString stringWithFormat:@"%.4f",re4];
+            NSString *s1=[NSString stringWithFormat:@"%f",re1];
+            NSString *s3=[NSString stringWithFormat:@"%f",re3];
+            NSString *s4=[NSString stringWithFormat:@"%f",re4];
             self.input1.text=s1;
             self.input3.text=s3;
             self.input4.text=s4;
@@ -233,9 +255,9 @@
             re2=[self fromUnit:self.choice2.text withNumber:temp];
             re4=[self fromUnit:self.choice4.text withNumber:temp];
             
-            NSString *s1=[NSString stringWithFormat:@"%.4f",re1];
-            NSString *s2=[NSString stringWithFormat:@"%.4f",re2];
-            NSString *s4=[NSString stringWithFormat:@"%.4f",re4];
+            NSString *s1=[NSString stringWithFormat:@"%f",re1];
+            NSString *s2=[NSString stringWithFormat:@"%f",re2];
+            NSString *s4=[NSString stringWithFormat:@"%f",re4];
             self.input1.text=s1;
             self.input2.text=s2;
             self.input4.text=s4;
@@ -250,15 +272,15 @@
             re2=[self fromUnit:self.choice2.text withNumber:temp];
             re3=[self fromUnit:self.choice3.text withNumber:temp];
             
-            NSString *s1=[NSString stringWithFormat:@"%.4f",re1];
-            NSString *s2=[NSString stringWithFormat:@"%.4f",re2];
-            NSString *s3=[NSString stringWithFormat:@"%.4f",re3];
+            NSString *s1=[NSString stringWithFormat:@"%f",re1];
+            NSString *s2=[NSString stringWithFormat:@"%f",re2];
+            NSString *s3=[NSString stringWithFormat:@"%f",re3];
             self.input1.text=s1;
             self.input2.text=s2;
             self.input3.text=s3;
         }
     }
-    
+   
 }
 
 - (void)loadDataFromXML {
@@ -303,7 +325,7 @@
         
         NSString* cur = [attributeDict valueForKey:@"currency"];  //get curency rate
         NSString* rate = [attributeDict valueForKey:@"rate"];
-        // NSLog(@"currency: %@, rate: %@", cur, rate);
+        //NSLog(@"currency: %@, rate: %@", cur, rate);
         if(cur){
             [self.unitMap setValue:rate forKey:cur];
             [self.userDefaults setValue:rate forKey:cur];
