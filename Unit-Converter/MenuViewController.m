@@ -139,7 +139,7 @@
     } else if ([identifier compare:@"Currency"] == 0) {
         
         top.userDefaults = [NSUserDefaults standardUserDefaults];
-        top.units=[[NSArray alloc]initWithObjects:@"EUR",@"USD",@"GBP",@"INR",@"AUD",@"CAD",@"AED",@"CHF",@"CNY",@"JPY",@"MYR",@"HKD", nil];
+        top.units=[[NSArray alloc]initWithObjects:@"EUR",@"USD",@"GBP",@"INR",@"AUD",@"CAD",@"CHF",@"CNY",@"JPY",@"MYR",@"HKD",@"ZAR",@"BRL", nil];
         top.unitMap=[[NSMutableDictionary alloc]init];
         top.classification = identifier;
         top.navigationBar.topItem.title = @"Currency";
@@ -159,7 +159,18 @@
         
         [top.picker reloadAllComponents];
         [self.slidingViewController resetTopView];
-        [top loadDataFromXML];
+        if(top.userDefaults == nil){
+            top.unitMap = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"1",@"EUR",@"1.3113",@"USD",@"0.84400",@"GBP",@"71.0370",@"INR",@"1.2671",@"AUD",@"1.3293",@"CAD",@"1.2279",@"CHF",@"8.0842",@"CNY",@"128.27",@"JPY",@"3.9766",@"MYR",@"10.1777",@"HKD",@"11.7470",@"ZAR",@"2.6112",@"BRL",@"7.4564",@"DKK", nil];
+            NSString *time=@"2013-4-29";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Last Update"
+                                                            message:time
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }else{
+            [top loadDataFromXML];
+        }
         
     } else if ([identifier compare:@"Temperature"] == 0) {
     [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
