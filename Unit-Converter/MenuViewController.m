@@ -155,10 +155,11 @@
         [top.picker selectRow:1 inComponent:1 animated:YES];
         [top.picker selectRow:2 inComponent:2 animated:YES];
         [top.picker selectRow:8 inComponent:3 animated:YES];
-        [top loadDataFromXML];
+        
         
         [top.picker reloadAllComponents];
         [self.slidingViewController resetTopView];
+        [top loadDataFromXML];
         
     } else if ([identifier compare:@"Temperature"] == 0) {
     [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
