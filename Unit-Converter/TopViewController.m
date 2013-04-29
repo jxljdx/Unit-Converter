@@ -349,10 +349,8 @@
     
     NSURL *url= [[NSURL alloc] initWithString:@"http://www.ecb.int/stats/eurofxref/eurofxref-daily.xml"];
     
-    //NSString *URLString = [NSString stringWithContentsOfURL:url];
-    NSXMLParser* parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    //if(URLString==nil){
-    if(parser == nil){
+    NSString *URLString = [NSString stringWithContentsOfURL:url];
+    if(URLString==nil){
         // Connection failed
         
         for(int i=0;i<[self.units count];i++){
@@ -361,7 +359,7 @@
         }
     }
     else{
-        
+        NSXMLParser* parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
         [parser setDelegate:self];
         [parser parse];
     }
